@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>DELETE Student by NPM</title>
+	</head>
+	<body>
+		<h3 th:text="${npmRemoved} != null ? 'NPM ' + ${npmRemoved} + ' has been deleted' : 'Error : NPM ' + ${npm} + ' not found'">Student NPM</h3>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+Dalam tutorial kali ini, saya mempelajari penggunaan model dan service pada springBoot. Dimana model mepresentasikan sebuah objek dan service merepresentasikan layanan yang bisa dilakukan oleh model tersebut. Kedua hal tersebut dan juga tampilan(view) dapat dikontrol oleh Controller yang ada. Alur kerja dari keempat hal tersebut juga saya pelajari dalam tutorial kali ini. Selain itu saya juga mempelajari beberapa trik yang ada pada thymeleaf yang berguna pada view.
+
+Pertanyaan :
+1. 	Data berhasil ditambahkan
+2. 	Whitelabel Error, dikarenakan terdapat requirement wajib yang tidak diberikan dalam url
+3. 	Data berhasil ditambahkan, lalu informasi mengenai student dengan npm 12345 ditampilkan
+4. 	Data tersebut tidak berhasil muncul dikarenakan ketika program dimatikan maka semua data akan terhapus. Hal ini disebabkan oleh data disimpan di dalam List yang bersifat sementara dan akan hilang ketika program dimatikan, berbeda dengan penyimpanan dengan database
+5. 	Data dari student muncul
+6. 	Semuda data dari student muncul
+
+Method Select Student :
+public StudentModel selectStudent(String npm) {
+	for (StudentModel a : studentList) {
+		if (a.getNpm().equals(npm)) {
+			return a;
+		}
+	}
+	return null;
+}
+Setiap objek dalam studentList akan dimasukkan ke dalam objek a dengan tipe StudentModel setiap proses looping yang dilakukan. Dimana setiap dari objek tersebut akan dilihat apakah atribut npm yang dimiliki sama dengan npm yang dicari, jika sama maka objek akan langsung dikembalikan sedangkan jika tidak maka looping akan terus dilanjutkan. Jika tidak ditemukan, maka akan pengembalian null.
+
+Latihan :
+1. 	Saya menggunakan fitur yang ada pada thymeleaf untuk melihat apakah suatu objek bernilai null atau tidak
+2. 	Fitur Delete student
+	Fitur delete yang saya buat dalam program ini menyerupai vitur view yang ada. Pertama-tama akan dilakukan request akan mendapatkan informasi npm dari url, lalu akan dilakukan pencarian terhadap npm tersebut. Dalam method deleteStudent pada class inMemoryStudentService, dilakukan pencarian di dalam list menggunakan metode yang serupa dengan method selectStudent. Jika data student dengan npm yang sesuai ditemukan, akan dilakukan penghapusan terhadap data tersebut dan akan dilakukan pengembalian String npm student. Jika tidak ditemukan, proses looping akan terus dilanjukan, namun bila npm tetap tidak ditemukan, maka akan dilakukan pengembalian null.
